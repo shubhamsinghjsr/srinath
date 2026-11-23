@@ -1,0 +1,34 @@
+export type RoleGroup = { group: string; roles: string[]; description: string; modules: string[] }
+
+const university = ['University Management','Campus & College Management','Department Management','Academic Management','Reports & Analytics','Communication & Notifications']
+const admission = ['Admission Management','Admission CRM & Enquiry Management','Student Management','Scholarship Management','Reports & Analytics']
+const academic = ['Department Management','Programs & Courses','Academic Management','Attendance Management','Examination & Results','Student Management','Student Mentoring & Counselling','Reports & Analytics']
+const exams = ['Examination & Results','Online Examination & Assessment','Student Management','Academic Management','Reports & Analytics']
+const placement = ['Placement & Internship','Student Management','Psychometric & Skill Evaluation','Communication & Notifications','Reports & Analytics']
+const finance = ['Finance & Accounting','Fee Management','Scholarship Management','Payroll Management','Inventory & Purchase','Reports & Analytics']
+const studentSupport = ['Student Management','Student Mentoring & Counselling','Student Feedback & Grievance','Leave Management','Hostel Management','Transport Management','Visitor & Gate Pass','Communication & Notifications']
+const library = ['Library Management','LMS & E-Learning','Inventory & Purchase','Student Management','Reports & Analytics']
+const research = ['Research Management','NAAC / NBA / IQAC','OBE Management','Reports & Analytics','Academic Management']
+const hrIt = ['HR & Staff Management','Faculty & Staff Attendance','Payroll Management','User Roles & Permissions','System Audit Logs','Backup & Database Management','API & Integrations','Settings & Configuration']
+const campusOps = ['Inventory & Purchase','Visitor & Gate Pass','Hostel Management','Transport Management','Settings & Configuration','Reports & Analytics']
+
+export const roleGroups: RoleGroup[] = [
+ {group:'Top Management & Administration',description:'University-wide overview, governance, approvals and administrative operations.',modules:university,roles:['Super Admin','Chancellor','Pro Chancellor','Vice Chancellor (VC)','Pro Vice Chancellor','Registrar','Deputy Registrar','Assistant Registrar','Dean','Controller of Administration','Personal Secretary to VC']},
+ {group:'Academic & Department Management',description:'Academic planning, class operations, students and department performance.',modules:academic,roles:['Academic Director','Director Academics','Principal','Vice Principal','HOD','Deputy HOD','Program Coordinator','Course Coordinator','Faculty / Professor','Assistant Professor','Guest Faculty','Academic Coordinator','Class Teacher / Mentor']},
+ {group:'Admission & Registration Department',description:'Admission enquiries, applications, verification, registration and scholarships.',modules:admission,roles:['Admission Director','Admission Manager','Admission Officer','Admission Counselor','Registration Officer','Document Verification Officer','Scholarship Officer']},
+ {group:'Examination Department',description:'Examination planning, assessment, marks, results and revaluation.',modules:exams,roles:['Controller of Examinations (COE)','Deputy Controller of Examinations','Assistant Controller of Examinations','Examination Officer','Chief Examination Superintendent','Examination Coordinator','Paper Setter','Paper Evaluator / Examiner','Result Processing Officer','Revaluation Officer','Practical Examination Coordinator']},
+ {group:'Placement & Career Development',description:'Recruiters, placement drives, student eligibility, interviews and internships.',modules:placement,roles:['Placement Director','Training & Placement Officer (TPO)','Deputy Placement Officer','Placement Coordinator','Corporate Relations Manager','Recruitment Coordinator','Internship Coordinator','Skill Development Coordinator','Placement Trainer','Alumni Coordinator']},
+ {group:'Finance & Accounts Department',description:'University accounts, fee collection, payroll, procurement and financial reports.',modules:finance,roles:['Finance Director','Finance Controller','Accounts Manager','Accountant','Fee Collection Officer','Cashier','Payroll Officer','Audit Officer','Purchase Officer']},
+ {group:'Student Support & Campus Management',description:'Student welfare, grievances, hostel, transport, security and medical support.',modules:studentSupport,roles:['Student Welfare Officer','Student Counselor','Grievance Officer','Anti-Ragging Officer','Discipline Officer','Hostel Warden','Hostel Manager','Transport Manager','Transport Coordinator','Security Officer','Medical Officer']},
+ {group:'Library & Learning Resources',description:'Library circulation, digital learning resources and laboratory operations.',modules:library,roles:['Chief Librarian','Assistant Librarian','Library Assistant','Digital Library Manager','Laboratory In-charge','Lab Assistant']},
+ {group:'Research, Quality & Accreditation',description:'Research activity, grants, publications and university accreditation evidence.',modules:research,roles:['Research Director','Research Coordinator','PhD Coordinator','IQAC Director / Coordinator','NAAC Coordinator','NBA Coordinator','NIRF Coordinator','Innovation & Incubation Officer','IPR / Patent Coordinator']},
+ {group:'HR & IT Administration',description:'People operations, payroll, ERP access, IT infrastructure and support.',modules:hrIt,roles:['HR Director','HR Manager','HR Executive','IT Director / CIO','IT Manager','System Administrator','ERP Administrator','Data Entry Operator','Network Administrator']},
+ {group:'Additional University Roles',description:'Sports, events, legal, communications, campus assets and maintenance.',modules:campusOps,roles:['Sports Director','Cultural Coordinator','Event Coordinator','International Relations Officer','Legal Officer','Public Relations Officer (PRO)','Estate Officer','Maintenance Officer','Store In-charge','Timetable Coordinator','Accreditation Officer']},
+ {group:'Student & Parent',description:'Student and guardian access to academic, attendance, fee and support information.',modules:['Student & Parent Portal','Student Management','Academic Management','Attendance Management','Fee Management','Examination & Results','Communication & Notifications'],roles:['Student','Parent / Guardian']},
+ {group:'Other ERP Users',description:'Specialized access for operations, communication and external collaborators.',modules:['Placement & Internship','Student Management','Communication & Notifications','Reports & Analytics'],roles:['Recruiter','Vendor / Supplier','Visitor / Security Desk']},
+]
+
+export const allRoles = roleGroups.flatMap(group => group.roles)
+export function getRoleGroup(role: string): RoleGroup {
+ return roleGroups.find(group => group.roles.includes(role)) || roleGroups[0]
+}
